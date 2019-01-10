@@ -1,3 +1,5 @@
+# -*- coding:utf-8 -*-
+
 # import cv2
 # #导入库
 #
@@ -34,6 +36,12 @@
 
 
 import cv2
+import os
+
+path = os.path.abspath(__file__).split('Face2.py',1)[0]+"\\xmlsorce\\haarcascade_frontalface_default.xml"
+
+if not os.path.isdir(os.path.abspath(__file__).split('\Face2.py',1)[0]):
+    os.mkdir(os.path.join(os.path.abspath(__file__).split('\Face2.exe',1)[0],'xmlsource'))
 
 capture = cv2.VideoCapture(0)
 
@@ -42,7 +50,7 @@ cv2.namedWindow("Hello",0)
 while True:
     ret,frame = capture.read()
 
-    face = cv2.CascadeClassifier('F://PythonDemo//FaceByOpenCV//venv//xmlsorce//haarcascade_frontalface_default.xml')
+    face = cv2.CascadeClassifier(path)
 
     gray = cv2.cvtColor(frame,cv2.COLOR_RGB2GRAY)
 
